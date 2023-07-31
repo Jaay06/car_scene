@@ -5,7 +5,8 @@ const Overlay = () => {
     <div className="overlay">
       <div className="container">
         <div className="title">
-          Scene Lighting Doodle: <p> Dominic Toretto's Barbie Collection</p>
+          Scene Lighting Doodle:{" "}
+          <p className="sub-titile"> Dominic Toretto's Barbie Collection</p>
         </div>
 
         <div className="car-model-link">
