@@ -32,25 +32,6 @@ const Experience = () => {
     colorB: "black",
   })
 
-  const { liftColor, liftScale } = useControls("lift", {
-    liftColor: "#FFD700",
-    liftScale: {
-      value: 0.43,
-      min: 0,
-      max: 1,
-      step: 0.01,
-    },
-  })
-
-  const { carPositionY } = useControls("car", {
-    carPositionY: {
-      value: 2.09,
-      min: -5,
-      max: 10,
-      step: 0.01,
-    },
-  })
-
   const rig = new THREE.Vector3()
 
   useFrame((state, delta) => {
