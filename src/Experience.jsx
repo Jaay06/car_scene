@@ -14,7 +14,6 @@ import {
 import { useControls } from "leva"
 import { useFrame } from "@react-three/fiber"
 import React, { useRef } from "react"
-import GroundCells from "./libs/GroundCells"
 import { Perf } from "r3f-perf"
 import { Car } from "./model/Car"
 import { MeshStandardMaterial } from "three"
@@ -24,7 +23,7 @@ import Lights from "./Lights"
 
 const Experience = () => {
   const { perfVisible } = useControls({
-    perfVisible: true,
+    perfVisible: false,
   })
 
   const { colorA, colorB } = useControls("enviroment-sphere", {

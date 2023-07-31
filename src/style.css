@@ -8,3 +8,71 @@ body,
   height: 100%;
   overflow: hidden;
 }
+
+a {
+  pointer-events: all;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  height: 90vh;
+}
+
+.title {
+  margin: 0 auto;
+  margin-top: 5%;
+  width: fit-content;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  text-align: center;
+}
+
+.title-id {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: fit-content;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+}
+
+.car-model-link {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+    margin-top: 20%;
+  }
+
+  .car-model-link {
+    font-size: 1.5rem;
+  }
+}
