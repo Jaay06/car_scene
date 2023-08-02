@@ -111,7 +111,7 @@ const Experience = () => {
         anchorX="center"
         anchorY="middle"
       >
-        nini
+        niola
       </Text>
 
       {/* model */}
