@@ -10,10 +10,13 @@ import {
   Backdrop,
   Environment,
   Lightformer,
+  Text,
+  Text3D,
+  Center,
 } from "@react-three/drei"
 import { useControls } from "leva"
 import { useFrame } from "@react-three/fiber"
-import React, { useRef } from "react"
+import React, { Suspense, useRef } from "react"
 import { Perf } from "r3f-perf"
 import { Car } from "./model/Car"
 import { MeshStandardMaterial } from "three"
@@ -88,20 +91,33 @@ const Experience = () => {
           bias={0.001}
         />
       </AccumulativeShadows>
-      {/* car */}
 
-      <group>
+      {/* box for testing */}
+      {/* <group>
         <mesh castShadow position={[-2, -0.5, 0]}>
           <boxGeometry />
           <meshStandardMaterial color="blue" />
         </mesh>
-      </group>
+      </group> */}
 
-      {/* Animate spin group */}
+      <Text
+        font="./fonts/DollieScript.ttf"
+        scale={1}
+        fontSize={2}
+        letterSpacing={0.05}
+        rotation={[-Math.PI / 2, 0, Math.PI / 2]}
+        position={[1.3, -0.998, 0]}
+        color="#DE3163"
+        anchorX="center"
+        anchorY="middle"
+      >
+        nini
+      </Text>
+
+      {/* model */}
       <Car position={[0, -1, 0]} />
 
       {/* enviroment */}
-
       <mesh
         scale={1.5}
         position={[0, -0.999, 0]}

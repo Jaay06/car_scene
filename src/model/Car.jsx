@@ -9,7 +9,7 @@ Title: Young Dominic Toretto Cars
 */
 
 import React, { useLayoutEffect, useRef } from "react"
-import { useGLTF } from "@react-three/drei"
+import { Decal, useGLTF, useTexture } from "@react-three/drei"
 import { applyProps } from "@react-three/fiber"
 import * as THREE from "three"
 
@@ -22,9 +22,8 @@ export function Car(props) {
     )
 
     applyProps(materials.lamp, {
-      // emissive: "#fff",
-      emissiveIntensity: 3,
       toneMapped: false,
+      blending: 0,
     })
 
     applyProps(materials.PaletteMaterial001, {
@@ -41,6 +40,8 @@ export function Car(props) {
       clearcoat: 1,
     })
 
+    console.log(materials.lamp)
+
     // nodes.Object_41.material = new THREE.MeshPhysicalMaterial({
     //   roughness: 0.3,
     //   metalness: 0.05,
@@ -52,81 +53,158 @@ export function Car(props) {
   }, [nodes, materials])
 
   return (
-    // <group {...props} dispose={null}>
-    //   <primitive object={nodes._rootJoint} />
-    //   <mesh
-    //     castShadow
-    //     geometry={nodes.BBK004_Disc_0.geometry}
-    //     material={materials.PaletteMaterial001}
-    //     position={[-0.477, 0.227, -0.764]}
-    //     rotation={[0, -Math.PI / 2, 0]}
-    //     scale={[0.112, 0.112, 0.164]}
-    //   />
-    //   <mesh
-    //     castShadow
-    //     geometry={nodes.Tire004_Tire_0.geometry}
-    //     material={materials.Tire}
-    //     position={[-0.493, 0.227, -0.765]}
-    //     rotation={[Math.PI / 2, -Math.PI / 2, 0]}
-    //     scale={[0.199, 0.199, 0.292]}
-    //   />
-    //   <skinnedMesh
-    //     castShadow
-    //     geometry={nodes.Object_41.geometry}
-    //     material={materials.PaletteMaterial002}
-    //     skeleton={nodes.Object_41.skeleton}
-    //     position={[0, 0.421, -1.684]}
-    //     rotation={[0.012, 0, 0]}
-    //     scale={3.748}
-    //   />
-    //   <skinnedMesh
-    //     castShadow
-    //     geometry={nodes.Object_42.geometry}
-    //     material={materials.PaletteMaterial001}
-    //     skeleton={nodes.Object_42.skeleton}
-    //     position={[0, 0.421, -1.684]}
-    //     rotation={[0.012, 0, 0]}
-    //     scale={3.748}
-    //   />
-    //   <skinnedMesh
-    //     castShadow
-    //     geometry={nodes.Object_43.geometry}
-    //     material={materials.lamp}
-    //     skeleton={nodes.Object_43.skeleton}
-    //     position={[0, 0.421, -1.684]}
-    //     rotation={[0.012, 0, 0]}
-    //     scale={3.748}
-    //   />
-    //   <skinnedMesh
-    //     castShadow
-    //     geometry={nodes.Object_44.geometry}
-    //     material={materials.PaletteMaterial001}
-    //     skeleton={nodes.Object_44.skeleton}
-    //     position={[0, 0.421, -1.684]}
-    //     rotation={[0.012, 0, 0]}
-    //     scale={3.748}
-    //   />
-    //   <skinnedMesh
-    //     castShadow
-    //     geometry={nodes.Object_45.geometry}
-    //     material={materials.PaletteMaterial003}
-    //     skeleton={nodes.Object_45.skeleton}
-    //     position={[0, 0.421, -1.684]}
-    //     rotation={[0.012, 0, 0]}
-    //     scale={3.748}
-    //   />
-    //   <skinnedMesh
-    //     castShadow
-    //     geometry={nodes.Object_46.geometry}
-    //     material={materials.PaletteMaterial003}
-    //     skeleton={nodes.Object_46.skeleton}
-    //     position={[0, 0.421, -1.684]}
-    //     rotation={[0.012, 0, 0]}
-    //     scale={3.748}
-    //   />
-    // </group>
-    <primitive object={scene} {...props} />
+    <group {...props} dispose={null}>
+      <primitive object={nodes._rootJoint} />
+      <mesh
+        castShadow
+        geometry={nodes.BBK004_Disc_0.geometry}
+        material={materials.PaletteMaterial001}
+        position={[-0.477, 0.227, -0.764]}
+        rotation={[0, -Math.PI / 2, 0]}
+        scale={[0.112, 0.112, 0.164]}
+      />
+      <mesh
+        castShadow
+        geometry={nodes.Tire004_Tire_0.geometry}
+        material={materials.Tire}
+        position={[-0.493, 0.227, -0.765]}
+        rotation={[Math.PI / 2, -Math.PI / 2, 0]}
+        scale={[0.199, 0.199, 0.292]}
+      />
+      {/* car body */}
+      <skinnedMesh
+        castShadow
+        geometry={nodes.Object_41.geometry}
+        material={materials.PaletteMaterial002}
+        skeleton={nodes.Object_41.skeleton}
+        // position={[1.6, -0.421, -1.684]}
+        // rotation={[0.012, 0, 0]}
+        // scale={3.748}
+      >
+        <BarbieSticker />
+      </skinnedMesh>
+      <skinnedMesh
+        castShadow
+        geometry={nodes.Object_42.geometry}
+        material={materials.PaletteMaterial001}
+        skeleton={nodes.Object_42.skeleton}
+        position={[0, 0.421, -1.684]}
+        rotation={[0.012, 0, 0]}
+        scale={3.748}
+      />
+      <skinnedMesh
+        castShadow
+        geometry={nodes.Object_43.geometry}
+        material={materials.lamp}
+        skeleton={nodes.Object_43.skeleton}
+        position={[0, 0.421, -1.684]}
+        rotation={[0.012, 0, 0]}
+        scale={3.748}
+      ></skinnedMesh>
+      <skinnedMesh
+        castShadow
+        geometry={nodes.Object_44.geometry}
+        material={materials.PaletteMaterial001}
+        skeleton={nodes.Object_44.skeleton}
+        position={[0, 0.421, -1.684]}
+        rotation={[0.012, 0, 0]}
+        scale={3.748}
+      />
+      <skinnedMesh
+        castShadow
+        geometry={nodes.Object_45.geometry}
+        material={materials.PaletteMaterial003}
+        skeleton={nodes.Object_45.skeleton}
+        position={[0, 0.421, -1.684]}
+        rotation={[0.012, 0, 0]}
+        scale={3.748}
+      />
+      <skinnedMesh
+        castShadow
+        geometry={nodes.Object_46.geometry}
+        material={materials.PaletteMaterial003}
+        skeleton={nodes.Object_46.skeleton}
+        position={[0, 0.421, -1.684]}
+        rotation={[0.012, 0, 0]}
+        scale={3.748}
+      />
+    </group>
+    // <>
+    //   <primitive object={scene} {...props} />
+    // </>
+
+    // <mesh geometry={nodes.Object_41.geometry}>
+    //   <meshPhysicalMaterial color="black" />
+    //   <BarbieSticker />
+    // </mesh>
   )
 }
 
 useGLTF.preload("/car-transformed.glb")
+
+export const BarbieSticker = ({ props }) => {
+  const driverSticker = useTexture("./barbie.png")
+  const passangerSticker = useTexture("./BarbieTop.png")
+
+  return (
+    <>
+      <Decal
+        // position={[-0.7, 0.4, 0.3]}
+        position={[0.6, 0.35, 0.2]}
+        scale={0.4}
+        {...props}
+        // rotation={[0, Math.PI / 2, Math.PI]}
+        rotation={[0, -Math.PI / 2, Math.PI]}
+      >
+        <meshPhysicalMaterial
+          map={driverSticker}
+          transparent
+          map-flipY={false}
+          map-anisotropy={16}
+          // map-wrapS={THREE.RepeatWrapping}
+          // map-wrapT={THREE.RepeatWrapping}
+          // map-offset={[-1, -0.3]}
+          // map-repeat={[6, 6]}
+          iridescence={1}
+          iridescenceIOR={1}
+          iridescenceThicknessRange={[0, 1400]}
+          roughness={1}
+          clearcoat={0.5}
+          metalness={0.75}
+          toneMapped={false}
+          polygonOffset
+          polygonOffsetFactor={-1}
+        />
+      </Decal>
+
+      <Decal
+        position={[-0.7, 0.3, 0.2]}
+        scale={0.5}
+        {...props}
+        rotation={[0, Math.PI / 2, Math.PI]}
+      >
+        <meshPhysicalMaterial
+          map={passangerSticker}
+          transparent
+          map-flipY={false}
+          map-anisotropy={16}
+          // map-wrapS={THREE.RepeatWrapping}
+          // map-wrapT={THREE.RepeatWrapping}
+          // map-offset={[-1, -0.3]}
+          // map-repeat={[6, 6]}
+          iridescence={1}
+          iridescenceIOR={1}
+          iridescenceThicknessRange={[0, 1400]}
+          roughness={1}
+          clearcoat={0.5}
+          metalness={0.75}
+          toneMapped={false}
+          polygonOffset
+          polygonOffsetFactor={-1}
+        />
+      </Decal>
+    </>
+  )
+}
+
+// frontLights
