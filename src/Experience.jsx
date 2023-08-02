@@ -39,7 +39,7 @@ const Experience = () => {
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime
 
-    // state.controls.autoRotate = true
+    state.controls.autoRotate = true
 
     //   state.camera.position.lerp(
     //     rig.set(
@@ -162,9 +162,9 @@ const Experience = () => {
       </mesh> */}
 
       {/* GizmoHelper */}
-      <GizmoHelper alignment="bottom-right" margin={[100, 100]}>
+      {/* <GizmoHelper alignment="bottom-right" margin={[100, 100]}>
         <GizmoViewport labelColor="white" axisHeadScale={1} />
-      </GizmoHelper>
+      </GizmoHelper> */}
     </>
   )
 }

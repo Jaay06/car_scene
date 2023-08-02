@@ -7,9 +7,8 @@ const Lights = () => {
   const topLightRef = useRef()
 
   useFrame((state, delta) => {
-    const time = state.clock.getElapsedTime()
-
-    topLightRef.current.position.z = Math.sin(time) * 10
+    // const time = state.clock.getElapsedTime()
+    // topLightRef.current.position.z = Math.sin(time) * 10
   })
 
   return (
@@ -48,7 +47,7 @@ const Lights = () => {
           form="circle"
           intensity={1}
           color="#f3e7d3"
-          scale={[5, 5]}
+          scale={[2, 2]}
           target={[0, 0, -1]}
           position={[0, 0, -10]}
         />

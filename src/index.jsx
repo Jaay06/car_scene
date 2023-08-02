@@ -16,7 +16,7 @@ root.render(
         fov: 25,
         near: 0.1,
         far: 200,
-        position: [0, 4, 15],
+        position: [-4, 3, 17],
         zoom: 1.5,
       }}
     >
