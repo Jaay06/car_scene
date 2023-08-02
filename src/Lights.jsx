@@ -9,7 +9,7 @@ const Lights = () => {
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime()
 
-    // topLightRef.current.position.z = Math.sin(time) * 10
+    topLightRef.current.position.z = Math.sin(time) * 10
   })
 
   return (
@@ -37,11 +37,20 @@ const Lights = () => {
 
         <Lightformer
           form="rect"
-          intensity={3}
+          intensity={1}
           color="white"
           scale={[10, 5]}
           target={[0, 0, 0]}
           position={[10, 0, 0]}
+        />
+
+        <Lightformer
+          form="circle"
+          intensity={1}
+          color="#f3e7d3"
+          scale={[5, 5]}
+          target={[0, 0, -1]}
+          position={[0, 0, -10]}
         />
 
         <Float speed={5} floatIntensity={2} rotationIntensity={2}>

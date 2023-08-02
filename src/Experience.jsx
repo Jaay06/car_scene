@@ -39,7 +39,7 @@ const Experience = () => {
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime
 
-    state.controls.autoRotate = true
+    // state.controls.autoRotate = true
 
     //   state.camera.position.lerp(
     //     rig.set(
