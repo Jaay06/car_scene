@@ -17,7 +17,7 @@ root.render(
         near: 0.1,
         far: 200,
         position: [-4, 3, 17],
-        zoom: 1.5,
+        zoom: 2.5,
       }}
     >
       <Experience />
