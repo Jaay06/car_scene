@@ -39,8 +39,6 @@ const Experience = () => {
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime
 
-    state.controls.autoRotate = false
-
     //   state.camera.position.lerp(
     //     rig.set(
     //       Math.sin(time / 5),
@@ -57,7 +55,7 @@ const Experience = () => {
       {perfVisible && <Perf position="top-left" />}
 
       {/* controls */}
-      <OrbitControls makeDefault />
+      <OrbitControls makeDefault autoRotate />
 
       {/* lights */}
       {/* <directionalLight position={[1, 2, 3]} intensity={1.5} /> */}

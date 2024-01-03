@@ -34,6 +34,26 @@ const Overlay = () => {
           <a href="https://skfb.ly/ops7I">Model Link</a>
         </div>
 
+        <div className="download-btn">
+          <button
+            style={{ backgroundColor: `${color}` }}
+            onClick={() => {
+              const link = document.createElement("a")
+              link.setAttribute("download", "canvas.png")
+              link.setAttribute(
+                "href",
+                document
+                  .querySelector("canvas")
+                  .toDataURL("image/png")
+                  .replace("image/png", "image/octet-stream")
+              )
+              link.click()
+            }}
+          >
+            DOWNLOAD
+          </button>
+        </div>
+
         {/* customize btn */}
 
         <div

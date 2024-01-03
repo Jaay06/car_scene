@@ -11,6 +11,9 @@ root.render(
   <>
     <Leva hidden />
     <Canvas
+      gl={{ preserveDrawingBuffer: true }}
+      eventSource={document.getElementById("root")}
+      eventPrefix="client"
       shadows
       camera={{
         fov: 25,
