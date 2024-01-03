@@ -113,10 +113,8 @@ button:hover {
 }
 
 .Hide > span {
-  mix-blend-mode: difference;
-  color: #ffffff;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: bolder;
 }
 
 .sidebar {
