@@ -8,13 +8,20 @@ Source: https://sketchfab.com/3d-models/young-dominic-toretto-cars-d0783bdf2ce34
 Title: Young Dominic Toretto Cars
 */
 
-import React, { useLayoutEffect, useRef } from "react"
-import { Decal, useGLTF, useTexture } from "@react-three/drei"
+import React, { useLayoutEffect, useRef, useState } from "react"
+import { Decal, Html, useGLTF, useTexture } from "@react-three/drei"
 import { applyProps } from "@react-three/fiber"
 import * as THREE from "three"
+import { HexColorPicker } from "react-colorful"
+import useGame from "../useGame"
 
 export function Car(props) {
   const { nodes, materials, scene } = useGLTF("/car-transformed.glb")
+
+  // const [color, setColor] = useState("#DE3163")
+
+  const color = useGame((state) => state.color)
+  const changeColor = useGame((state) => state.changeColor)
 
   useLayoutEffect(() => {
     Object.values(nodes).forEach(
@@ -34,117 +41,104 @@ export function Car(props) {
     applyProps(materials.PaletteMaterial002, {
       roughness: 0.3,
       metalness: 0.05,
-      color: "#DE3163",
       envMapIntensity: 0.75,
       clearcoatRoughness: 0,
       clearcoat: 1,
     })
-
-    console.log(materials.lamp)
-
-    // nodes.Object_41.material = new THREE.MeshPhysicalMaterial({
-    //   roughness: 0.3,
-    //   metalness: 0.05,
-    //   color: "#FF69B4",
-    //   envMapIntensity: 0.75,
-    //   clearcoatRoughness: 0,
-    //   clearcoat: 1,
-    // })
   }, [nodes, materials])
 
   return (
-    <group {...props} dispose={null}>
-      <primitive object={nodes._rootJoint} />
-      <mesh
-        castShadow
-        geometry={nodes.BBK004_Disc_0.geometry}
-        material={materials.PaletteMaterial001}
-        position={[-0.477, 0.227, -0.764]}
-        rotation={[0, -Math.PI / 2, 0]}
-        scale={[0.112, 0.112, 0.164]}
-      />
-      <mesh
-        castShadow
-        geometry={nodes.Tire004_Tire_0.geometry}
-        material={materials.Tire}
-        position={[-0.493, 0.227, -0.765]}
-        rotation={[Math.PI / 2, -Math.PI / 2, 0]}
-        scale={[0.199, 0.199, 0.292]}
-      />
-      {/* car body */}
-      <skinnedMesh
-        castShadow
-        geometry={nodes.Object_41.geometry}
-        material={materials.PaletteMaterial002}
-        skeleton={nodes.Object_41.skeleton}
-        // position={[1.6, -0.421, -1.684]}
-        // rotation={[0.012, 0, 0]}
-        // scale={3.748}
-      >
-        <BarbieSticker />
-      </skinnedMesh>
-      <skinnedMesh
-        castShadow
-        geometry={nodes.Object_42.geometry}
-        material={materials.PaletteMaterial001}
-        skeleton={nodes.Object_42.skeleton}
-        position={[0, 0.421, -1.684]}
-        rotation={[0.012, 0, 0]}
-        scale={3.748}
-      />
-      <skinnedMesh
-        castShadow
-        geometry={nodes.Object_43.geometry}
-        material={materials.lamp}
-        skeleton={nodes.Object_43.skeleton}
-        position={[0, 0.421, -1.684]}
-        rotation={[0.012, 0, 0]}
-        scale={3.748}
-      ></skinnedMesh>
-      <skinnedMesh
-        castShadow
-        geometry={nodes.Object_44.geometry}
-        material={materials.PaletteMaterial001}
-        skeleton={nodes.Object_44.skeleton}
-        position={[0, 0.421, -1.684]}
-        rotation={[0.012, 0, 0]}
-        scale={3.748}
-      />
-      <skinnedMesh
-        castShadow
-        geometry={nodes.Object_45.geometry}
-        material={materials.PaletteMaterial003}
-        skeleton={nodes.Object_45.skeleton}
-        position={[0, 0.421, -1.684]}
-        rotation={[0.012, 0, 0]}
-        scale={3.748}
-      />
-      <skinnedMesh
-        castShadow
-        geometry={nodes.Object_46.geometry}
-        material={materials.PaletteMaterial003}
-        skeleton={nodes.Object_46.skeleton}
-        position={[0, 0.421, -1.684]}
-        rotation={[0.012, 0, 0]}
-        scale={3.748}
-      />
-    </group>
-    // <>
-    //   <primitive object={scene} {...props} />
-    // </>
-
-    // <mesh geometry={nodes.Object_41.geometry}>
-    //   <meshPhysicalMaterial color="black" />
-    //   <BarbieSticker />
-    // </mesh>
+    <>
+      <group {...props} dispose={null}>
+        <primitive object={nodes._rootJoint} />
+        <mesh
+          castShadow
+          geometry={nodes.BBK004_Disc_0.geometry}
+          material={materials.PaletteMaterial001}
+          material-color={color}
+          position={[-0.477, 0.227, -0.764]}
+          rotation={[0, -Math.PI / 2, 0]}
+          scale={[0.112, 0.112, 0.164]}
+        />
+        <mesh
+          castShadow
+          geometry={nodes.Tire004_Tire_0.geometry}
+          material={materials.Tire}
+          position={[-0.493, 0.227, -0.765]}
+          rotation={[Math.PI / 2, -Math.PI / 2, 0]}
+          scale={[0.199, 0.199, 0.292]}
+        />
+        {/* car body */}
+        <skinnedMesh
+          castShadow
+          geometry={nodes.Object_41.geometry}
+          material={materials.PaletteMaterial002}
+          material-color={color}
+          skeleton={nodes.Object_41.skeleton}
+          // position={[1.6, -0.421, -1.684]}
+          // rotation={[0.012, 0, 0]}
+          // scale={3.748}
+        >
+          <BarbieSticker />
+        </skinnedMesh>
+        <skinnedMesh
+          castShadow
+          geometry={nodes.Object_42.geometry}
+          material={materials.PaletteMaterial001}
+          material-color={color}
+          skeleton={nodes.Object_42.skeleton}
+          position={[0, 0.421, -1.684]}
+          rotation={[0.012, 0, 0]}
+          scale={3.748}
+        />
+        <skinnedMesh
+          castShadow
+          geometry={nodes.Object_43.geometry}
+          material={materials.lamp}
+          skeleton={nodes.Object_43.skeleton}
+          position={[0, 0.421, -1.684]}
+          rotation={[0.012, 0, 0]}
+          scale={3.748}
+        ></skinnedMesh>
+        <skinnedMesh
+          castShadow
+          geometry={nodes.Object_44.geometry}
+          material={materials.PaletteMaterial001}
+          material-color={color}
+          skeleton={nodes.Object_44.skeleton}
+          position={[0, 0.421, -1.684]}
+          rotation={[0.012, 0, 0]}
+          scale={3.748}
+        />
+        <skinnedMesh
+          castShadow
+          geometry={nodes.Object_45.geometry}
+          material={materials.PaletteMaterial003}
+          skeleton={nodes.Object_45.skeleton}
+          position={[0, 0.421, -1.684]}
+          rotation={[0.012, 0, 0]}
+          scale={3.748}
+        />
+        <skinnedMesh
+          castShadow
+          geometry={nodes.Object_46.geometry}
+          material={materials.PaletteMaterial003}
+          skeleton={nodes.Object_46.skeleton}
+          position={[0, 0.421, -1.684]}
+          rotation={[0.012, 0, 0]}
+          scale={3.748}
+        />
+      </group>
+    </>
   )
 }
 
-useGLTF.preload("/car-transformed.glb")
-
 export const BarbieSticker = ({ props }) => {
-  const driverSticker = useTexture("./barbie.png")
-  const passangerSticker = useTexture("./BarbieTop.png")
+  const driverDecal = useGame((state) => state.driverDecal)
+  const passangerDecal = useGame((state) => state.passangerDecal)
+
+  const driverSticker = useTexture(`${driverDecal}`)
+  const passangerSticker = useTexture(`${passangerDecal}`)
 
   return (
     <>
@@ -207,4 +201,11 @@ export const BarbieSticker = ({ props }) => {
   )
 }
 
-// frontLights
+useGLTF.preload("/car-transformed.glb")
+;[
+  "/carRed.png",
+  "/fireSkull.png",
+  "/punisher.png",
+  "/barbie.png",
+  "/BarbieTop.png",
+].forEach(useTexture.preload)

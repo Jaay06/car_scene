@@ -7,6 +7,8 @@ body,
   width: 100%;
   height: 100%;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -14,6 +16,15 @@ a {
   text-decoration: underline;
   cursor: pointer;
   color: #ffffff;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.hambuger-menu {
+  display: none;
+  pointer-events: all;
 }
 
 .overlay {
@@ -59,6 +70,114 @@ a {
   font-style: italic;
 }
 
+.customize > button {
+  pointer-events: all;
+  background-color: #f5abc7;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 200px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.Hide {
+  position: absolute;
+  right: 10px;
+  background-color: #bfc1c7;
+  border-radius: 4px;
+  border: 0.1px solid;
+  padding: 5px;
+  width: 50px;
+}
+
+.Hide > span {
+  mix-blend-mode: difference;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sidebar {
+  pointer-events: all;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  border-radius: 4px;
+  padding: 10px;
+  width: 350px;
+  height: 600px;
+  background-color: #9cadd4;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 700;
+
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.colorPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colorPicker > input {
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #878787;
+  border: none;
+  max-width: 200px;
+}
+
+.sticker {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.decals {
+  display: flex;
+  flex-direction: row;
+}
+
+.decal {
+  width: 40px;
+  padding: 7px;
+  margin: 2px;
+  border-radius: 50%;
+  transition: background-color 0.4s;
+}
+
+.decal:hover {
+  cursor: pointer;
+  background-color: #323232;
+}
+
+.decal > img {
+  width: 100%;
+  height: 100%;
+}
+
+hr {
+  margin: 4;
+  border: #323232 0.5px dashed;
+}
+
 @media (max-width: 600px) {
   .title {
     font-size: 2rem;
@@ -72,5 +191,27 @@ a {
   .car-model-link {
     font-size: 1.5rem;
     bottom: 15%;
+  }
+
+  .customize {
+    display: none;
+  }
+
+  .hambuger-menu {
+    display: block;
+    width: 50px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    margin-top: 20px;
+  }
+
+  .sidebar {
+    width: 300px;
+    height: 80vh;
+  }
+
+  .sticker {
+    width: 90%;
   }
 }

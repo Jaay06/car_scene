@@ -39,7 +39,7 @@ const Experience = () => {
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime
 
-    state.controls.autoRotate = true
+    state.controls.autoRotate = false
 
     //   state.camera.position.lerp(
     //     rig.set(
@@ -139,7 +139,7 @@ const Experience = () => {
           <Depth
             colorA={colorA}
             colorB={colorB}
-            alpha={0.5}
+            alpha={0.7}
             mode="normal"
             near={0}
             far={300}
@@ -149,17 +149,6 @@ const Experience = () => {
       </mesh>
 
       <Lights />
-
-      {/* floor */}
-      {/* <mesh
-        receiveShadow
-        position-y={-1}
-        rotation-x={-Math.PI * 0.5}
-        scale={10}
-      >
-        <planeGeometry args={[1, 1]} />
-        <meshStandardMaterial color="white" />
-      </mesh> */}
 
       {/* GizmoHelper */}
       {/* <GizmoHelper alignment="bottom-right" margin={[100, 100]}>
