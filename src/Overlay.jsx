@@ -26,8 +26,8 @@ const Overlay = () => {
       </div>
       <div className="container">
         <div className="title">
-          Scene Lighting Doodle:{" "}
-          <p className="sub-titile"> Dominic Toretto's Barbie Collection</p>
+          Lighting and Scene Car Customization
+          <p className="sub-titile"></p>
         </div>
 
         <div className="car-model-link">

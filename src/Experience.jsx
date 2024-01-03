@@ -92,15 +92,7 @@ const Experience = () => {
         />
       </AccumulativeShadows>
 
-      {/* box for testing */}
-      {/* <group>
-        <mesh castShadow position={[-2, -0.5, 0]}>
-          <boxGeometry />
-          <meshStandardMaterial color="blue" />
-        </mesh>
-      </group> */}
-
-      <Text
+      {/* <Text
         font="./fonts/DollieScript.ttf"
         scale={1}
         fontSize={2}
@@ -112,7 +104,7 @@ const Experience = () => {
         anchorY="middle"
       >
         niola
-      </Text>
+      </Text> */}
 
       {/* model */}
       <Car position={[0, -1, 0]} />
@@ -122,13 +114,14 @@ const Experience = () => {
         scale={1.5}
         position={[0, -0.999, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
+        receiveShadow
       >
-        <ringGeometry args={[0.9, 1, 30, 1]} />
+        <ringGeometry args={[0.9, 1.1, 70, 1]} />
         <meshStandardMaterial
           color="white"
-          roughness={0.7}
+          roughness={0.5}
           emissive={0xffffff}
-          emissiveIntensity={20}
+          emissiveIntensity={30}
         />
       </mesh>
 
