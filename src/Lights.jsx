@@ -7,8 +7,8 @@ const Lights = () => {
   const topLightRef = useRef()
 
   useFrame((state, delta) => {
-    // const time = state.clock.getElapsedTime()
-    // topLightRef.current.position.z = Math.sin(time) * 10
+    const time = state.clock.getElapsedTime()
+    topLightRef.current.position.z = Math.sin(time) * 10
   })
 
   return (

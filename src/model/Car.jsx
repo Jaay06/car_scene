@@ -18,8 +18,6 @@ import useGame from "../useGame"
 export function Car(props) {
   const { nodes, materials, scene } = useGLTF("/car-transformed.glb")
 
-  // const [color, setColor] = useState("#DE3163")
-
   const color = useGame((state) => state.color)
   const changeColor = useGame((state) => state.changeColor)
 
@@ -75,9 +73,6 @@ export function Car(props) {
           material={materials.PaletteMaterial002}
           material-color={color}
           skeleton={nodes.Object_41.skeleton}
-          // position={[1.6, -0.421, -1.684]}
-          // rotation={[0.012, 0, 0]}
-          // scale={3.748}
         >
           <BarbieSticker />
         </skinnedMesh>
@@ -143,11 +138,9 @@ export const BarbieSticker = ({ props }) => {
   return (
     <>
       <Decal
-        // position={[-0.7, 0.4, 0.3]}
         position={[0.6, 0.35, 0.2]}
         scale={0.4}
         {...props}
-        // rotation={[0, Math.PI / 2, Math.PI]}
         rotation={[0, -Math.PI / 2, Math.PI]}
       >
         <meshPhysicalMaterial
@@ -155,10 +148,6 @@ export const BarbieSticker = ({ props }) => {
           transparent
           map-flipY={false}
           map-anisotropy={16}
-          // map-wrapS={THREE.RepeatWrapping}
-          // map-wrapT={THREE.RepeatWrapping}
-          // map-offset={[-1, -0.3]}
-          // map-repeat={[6, 6]}
           iridescence={1}
           iridescenceIOR={1}
           iridescenceThicknessRange={[0, 1400]}
@@ -167,13 +156,13 @@ export const BarbieSticker = ({ props }) => {
           metalness={0.75}
           toneMapped={false}
           polygonOffset
-          polygonOffsetFactor={-1}
+          polygonOffsetFactor={-10}
         />
       </Decal>
 
       <Decal
         position={[-0.7, 0.3, 0.2]}
-        scale={0.5}
+        scale={0.45}
         {...props}
         rotation={[0, Math.PI / 2, Math.PI]}
       >
@@ -182,10 +171,6 @@ export const BarbieSticker = ({ props }) => {
           transparent
           map-flipY={false}
           map-anisotropy={16}
-          // map-wrapS={THREE.RepeatWrapping}
-          // map-wrapT={THREE.RepeatWrapping}
-          // map-offset={[-1, -0.3]}
-          // map-repeat={[6, 6]}
           iridescence={1}
           iridescenceIOR={1}
           iridescenceThicknessRange={[0, 1400]}
@@ -194,7 +179,7 @@ export const BarbieSticker = ({ props }) => {
           metalness={0.75}
           toneMapped={false}
           polygonOffset
-          polygonOffsetFactor={-1}
+          polygonOffsetFactor={-10}
         />
       </Decal>
     </>

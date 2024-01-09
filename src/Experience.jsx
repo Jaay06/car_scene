@@ -36,26 +36,12 @@ const Experience = () => {
 
   const rig = new THREE.Vector3()
 
-  useFrame((state, delta) => {
-    const time = state.clock.elapsedTime
-
-    //   state.camera.position.lerp(
-    //     rig.set(
-    //       Math.sin(time / 5),
-    //       Math.sin(time / 5) + 0.5,
-    //       12 + Math.cos(time / 5) / 2
-    //     ),
-    //     0.05
-    //   )
-    //   state.camera.lookAt(0, 0, 0)
-  })
-
   return (
     <>
       {perfVisible && <Perf position="top-left" />}
 
       {/* controls */}
-      <OrbitControls makeDefault autoRotate />
+      <OrbitControls makeDefault autoRotate={false} />
 
       {/* lights */}
       {/* <directionalLight position={[1, 2, 3]} intensity={1.5} /> */}
@@ -90,24 +76,10 @@ const Experience = () => {
         />
       </AccumulativeShadows>
 
-      {/* <Text
-        font="./fonts/DollieScript.ttf"
-        scale={1}
-        fontSize={2}
-        letterSpacing={0.05}
-        rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-        position={[1.3, -0.998, 0]}
-        color="#DE3163"
-        anchorX="center"
-        anchorY="middle"
-      >
-        niola
-      </Text> */}
-
       {/* model */}
       <Car position={[0, -1, 0]} />
 
-      {/* enviroment */}
+      {/* Enviroment */}
       <mesh
         scale={1.5}
         position={[0, -0.999, 0]}
@@ -122,7 +94,6 @@ const Experience = () => {
           emissiveIntensity={30}
         />
       </mesh>
-
       <mesh scale={100}>
         <sphereGeometry args={[1, 64, 64]} />
         <LayerMaterial side={THREE.BackSide}>
